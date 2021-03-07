@@ -20,8 +20,14 @@ defmodule Rocketpay.Account do
     timestamps()
   end
 
-  def changeset(params) do
-    %__MODULE__{}
+  # O changeset tem duas formas de trabalhar:
+  # com um changeset de criação, que sempre parto de uma struct vazia (%__MODULE__{})
+  # ou um changeset de update, que não começa com uma struct vazia, mas com uma struct
+  # já preenchida e o cast só fará cast daquilo que muda. \\ define o argumento default,
+  # ou seja, se não for passada uma struct, usar uma struct vazia %__MODULE__{} (vai entender)
+  # que é para criação.
+  def changeset(struct \\ %__MODULE__{}, params) do
+    struct
     |> cast(params, @required_params)
     |> validate_required(@required_params)
 
