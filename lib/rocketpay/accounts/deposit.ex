@@ -43,13 +43,13 @@ defmodule Rocketpay.Accounts.Deposit do
     # caso contrário, emite erro
     |> Decimal.cast()
 
-    # l lida com o cast e retorna ou erro ou a soma
+    # lida com o cast e retorna ou erro ou a soma
     |> handle_cast(balance)
   end
 
   # lida com o processo de cast considerando os dois casos: erro e sucesso;
   # em caso de sucesso, retorna a struct Decimal com o valor somado
-  defp handle_cast({:ok, value}, balance), do: Decimal.add(value, balance)
+  defp handle_cast({:ok, value}, balance), do: Decimal.add(balance, value)
   defp handle_cast(:error, _balance), do: {:error, "Invalid deposit value"}
 
   defp update_account({:error, _reason} = error, _repo, _account), do: error

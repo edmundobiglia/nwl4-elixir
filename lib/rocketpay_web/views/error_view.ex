@@ -15,6 +15,12 @@ defmodule RocketpayWeb.ErrorView do
     }
   end
 
+  def render("400.json", %{result: message}) do
+    %{
+      message: message
+    }
+  end
+
   # traverse_errors(changeset) é uma função padrão do Ecto
   # para converter os erro em mensagens mais amigáveis
   defp translate_errors(changeset) do
