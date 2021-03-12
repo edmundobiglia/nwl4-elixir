@@ -1,7 +1,7 @@
 defmodule Rocketpay do
   # criamos um alias dando um apelido para o último método
   alias Rocketpay.Users.Create, as: UserCreate
-  alias Rocketpay.Accounts.{Deposit, Withdraw}
+  alias Rocketpay.Accounts.{Deposit, Withdraw, Transaction}
 
   # sei que tenho um módulo Rocketpay com várias funcionalidades
   # para não ter que ficar encadeando, faço este aliasing abaixo
@@ -12,4 +12,6 @@ defmodule Rocketpay do
   defdelegate deposit(params), to: Deposit, as: :call
 
   defdelegate withdraw(params), to: Withdraw, as: :call
+
+  defdelegate transaction(params), to: Transaction, as: :call
 end

@@ -1,7 +1,7 @@
 # O teste de um módulo tem o mesmo nome, mas Test no final
 defmodule Rocketpay.NumbersTest do
   # Define que se trata de um teste
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Rocketpay.Numbers
 
